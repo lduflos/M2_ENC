@@ -55,4 +55,4 @@ exemples paramètres :
 On écrit une ligne en utilisant la méthode `.writerow()` qui prend comme argument une liste  
 On utilise `.writerow()` autant de fois que nécessaire
 
-*`from __ import __`: importation d'un sous-module ou d'une sous-fonction en particulier
+*`from __ import __`*: importation d'un sous-module ou d'une sous-fonction en particulier
