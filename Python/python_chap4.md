@@ -14,13 +14,16 @@ Python est fait de nbses fonctions de base (ex: `len()` ou `print()`) + packages
 ## Package CSV
 Important : lecture de la documentation (https://docs.python.org/3.5/library/csv.html)
 ### Lire : `reader()`
-```python
+
+``` python
 import csv
 with open('data/csv/eggs.csv', newline='') as csvfile: #newline='' pas important, peu utilisé
     spamreader = csv.reader(csvfile, delimiter=' ', quotechar='|') #lecteur de fichier csv (parcer : lire un format et l'interpréter en langage informatique)
     for row in spamreader:
         print(row)
-        print(', '.join(row))```
+        print(', '.join(row))
+```
+     
 
 Analyse :
 * `csv.reader()` prend comme premier argument un fichier ouvert
@@ -35,12 +38,13 @@ exemples paramètres :
 => permet de renvoyer un tuple sur une valeur simple afin de compter l'index de l'objet parcouru
 
 ### Ecrire : `writer()`  
-```python
+``` python
 import csv
 with open('data/csv/eggs.csv', 'w') as csvfile:
     spamwriter = csv.writer(csvfile, delimiter=' ', quotechar='|', quoting=csv.QUOTE_MINIMAL) #quoting : permet au csv comment il est rédigé
     spamwriter.writerow(['Spam'] * 5 + ['Baked Beans']) #liste (....)
-    spamwriter.writerow(['Spam', 'Lovely Spam', 'Wonderful Spam'])```
+    spamwriter.writerow(['Spam', 'Lovely Spam', 'Wonderful Spam'])
+```
 
 Analyse :
 * `csv.writer()` prend comme premier argument un fichier ouvert en mode écriture
