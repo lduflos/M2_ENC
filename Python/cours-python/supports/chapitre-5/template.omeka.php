@@ -4,9 +4,9 @@
 <footer role="contentinfo">
 
     <div id="footer-content" class="center-div">
-        <?php if($footerText = get_theme_option('Footer Text')): ?>
+        <?php if($footerText = get_theme_option('Footer Text')): ?> <!-- variables tjs précédées de $ / si la variable fotterText est égale au get_theme_option alors -->
         <div id="custom-footer-text">
-            <p><?php echo get_theme_option('Footer Text'); ?></p>
+            <p><?php echo get_theme_option('Footer Text'); ?></p> <!-- afficher -->
         </div>
         <?php endif; ?>
         <?php if ((get_theme_option('Display Footer Copyright') == 1) && $copyright = option('copyright')): ?>
