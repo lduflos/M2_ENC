@@ -1,6 +1,6 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
-
+# from .routes import lieu, accueil : s'il avait été placé là, il y aurait eu une boucle entre fichiers app et routes
 
 app = Flask("Application")
 # On configure la base de données
