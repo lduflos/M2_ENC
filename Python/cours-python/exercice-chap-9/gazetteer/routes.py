@@ -21,12 +21,10 @@ def lieu(place_id):
     unique_lieu = Place.query.get(place_id)
     return render_template("pages/place.html", nom="Gazetteer", lieu=unique_lieu)
 
-
-@app.route("/recherche")
+@app.route("/Recherche")
 def recherche():
     # On préfèrera l'utilisation de .get() ici
     #   qui nous permet d'éviter un if long (if "clef" in dictionnaire and dictonnaire["clef"])
-    motclef = request.args.get("keyword", None)
     page = request.args.get("page", 1)
 
     if isinstance(page, str) and page.isdigit():
@@ -40,15 +38,41 @@ def recherche():
 
     # On fait de même pour le titre de la page
     titre = "Recherche"
-    if motclef:
-        resultats = Place.query.filter(
-            Place.place_nom.like("%{}%".format(motclef))
-        ).paginate(page=page, per_page=LIEUX_PAR_PAGES)
-        titre = "Résultat pour la recherche `" + motclef + "`"
+    resultats = Place.query.filter(
+        Place.place_nom.like("%{}%".format(motclef))
+    ).paginate(page=page, per_page=LIEUX_PAR_PAGES)
+    titre = "Résultat pour la recherche `" + motclef + "`"
 
     return render_template(
         "pages/recherche.html",
         resultats=resultats,
         titre=titre,
         keyword=motclef
+    )
+
+
+@app.route("/index")
+def index():
+    # On préfèrera l'utilisation de .get() ici
+    #   qui nous permet d'éviter un if long (if "clef" in dictionnaire and dictonnaire["clef"])
+    page = request.args.get("page", 1)
+
+    if isinstance(page, str) and page.isdigit():
+        page = int(page)
+    else:
+        page = 1
+
+    # On crée une liste vide de résultat (qui restera vide par défaut
+    #   si on n'a pas de mot clé)
+    resultats = []
+
+    # On fait de même pour le titre de la page
+    titre = "Index"
+    resultats = Place.query.order_by(
+        Place.place_nom).paginate(page=page, per_page=LIEUX_PAR_PAGES)
+
+    return render_template(
+        "pages/index.html",
+        liste_index=resultats,
+        titre=titre,
     )

@@ -8,7 +8,7 @@
 
     <h1>Index</h1>
         <ul>
-            {% for lieu in resultats.items %}
+            {% for lieu in liste_index.items %}
                 <li><a href="{{url_for('lieu', place_id=lieu.place_id)}}">{{lieu.place_nom}}</a></li>
             {% endfor %}
         </ul>
@@ -31,10 +31,9 @@
                 <li class="page-item disabled">
                   <a class="page-link">...</a>
                 </li>
-            {% endif %}
+           {% endif %}
 
         {%- endfor %}
       </ul>
     </nav>
-    {% endif %}
 {% endblock %}
