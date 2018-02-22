@@ -1,5 +1,5 @@
 from flask import render_template, request, flash, redirect
-from flask_login import current_user, login_user, logout_user
+from flask_login import current_user, login_user, logout_user, login_required
 
 from ..app import app, login
 from ..constantes import LIEUX_PAR_PAGE
@@ -136,6 +136,7 @@ def deconnexion():
     return redirect("/")
 
 @app.route("/modification")
+@login_required
 def modification():
     print(request.args)
     status, donnees = Place.creer_lieu( #ajouter l'utilisateur actuel dans les auteurs

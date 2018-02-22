@@ -58,7 +58,7 @@ class Place(db.Model):
         }
 
     @staticmethod
-    def creer_lieu(nom, latitude, longitude, description, type):
+    def modification(nom, latitude, longitude, description, type):
         erreurs = []
         if not nom:
             erreurs.append("Le nom du lieu est obligatoire")
